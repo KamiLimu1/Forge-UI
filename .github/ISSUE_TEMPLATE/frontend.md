@@ -14,7 +14,7 @@ assignees: ''
 
 <!-- The backend endpoint this feature reads from or writes to -->
 <!-- Example: GET /sessions/{cohort_id} -->
-<!-- Link to the relevant section of http://localhost:8000/docs -->
+<!-- Link to the relevant section of http://localhost:8000/api/v1/docs -->
 
 **Endpoint:**
 **Request:**

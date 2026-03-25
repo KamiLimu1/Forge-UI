@@ -55,7 +55,7 @@ fix/FORGE-{issue-number}-short-description
 Before building any component that fetches data, open the backend API docs at:
 
 ```
-http://localhost:8000/docs
+http://localhost:8000/api/v1/docs
 ```
 
 This is the single source of truth for every endpoint — what it expects, what it returns, and what errors it produces. All API calls in this repo go through `src/lib/api.ts`. Never call `fetch()` directly inside a component or hook.
@@ -94,7 +94,7 @@ e.g. Section 8.1 — Mentee Dashboard
 
 Read CONVENTIONS.md for the full standards. The short version:
 
-- Never hardcode a hex value or pixel value — use tokens from `src/styles/globals.css`
+- Never hardcode a hex value or pixel value — use tokens from `src/styles/global.css`
 - Never call `fetch()` directly — use `src/lib/api.ts`
 - Never put business logic in a component — put it in a hook in `src/hooks/`
 - Always handle loading, empty, and error states

@@ -9,6 +9,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Hind+Guntur:wght@400;500;600;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
 
   /* ---------------------------------------------------------------------------
@@ -257,7 +261,7 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-size: var(--text-body);
   font-weight: var(--font-normal);
   line-height: var(--leading-normal);

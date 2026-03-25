@@ -82,7 +82,7 @@ forge-frontend/
 │   │   └── api.ts              # Centralised API client — all API calls go here
 │   ├── pages/                  # One file per route
 │   ├── styles/
-│   │   └── globals.css         # All design tokens — single source of truth
+│   │   └── global.css         # All design tokens — single source of truth
 │   └── types/                  # TypeScript type definitions for all API responses
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
@@ -152,7 +152,7 @@ See `.env.example` for all required variables and instructions on where to get e
 
 ## API Contract
 
-All backend endpoints are documented at `http://localhost:8000/docs` when the backend is running locally. Read this before building any component that fetches data. The API client lives at `src/lib/api.ts` — all API calls go through this file.
+All backend endpoints are documented at `http://localhost:8000/api/v1/docs` when the backend is running locally. Read this before building any component that fetches data. The API client lives at `src/lib/api.ts` — all API calls go through this file.
 
 ---
 

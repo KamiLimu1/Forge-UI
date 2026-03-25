@@ -52,7 +52,7 @@ export function SessionRow({ session, windowState, onAttendanceSubmit }: Session
 
 ### Tokens First, Always
 
-All colours, font sizes, spacing, border radii, shadows, and transitions come from CSS custom properties defined in `src/styles/globals.css`. The Tailwind config maps these to utility classes.
+All colours, font sizes, spacing, border radii, shadows, and transitions come from CSS custom properties defined in `src/styles/global.css`. The Tailwind config maps these to utility classes.
 
 **Never hardcode a hex value:**
 ```typescript
@@ -89,7 +89,7 @@ className="flex-col md:flex-row"
 
 ### Dark Mode
 
-The KamiLimu brand supports both light and dark modes. Dark mode tokens are defined in globals.css under `prefers-color-scheme: dark`. Always test components in both modes before opening a PR. Never hardcode a colour that only works in one mode.
+The KamiLimu brand supports both light and dark modes. Dark mode tokens are defined in global.css under `prefers-color-scheme: dark`. Always test components in both modes before opening a PR. Never hardcode a colour that only works in one mode.
 
 ### Tailwind
 

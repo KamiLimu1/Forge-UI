@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
 
       // -------------------------------------------------------------------------
-      // Colours — mapped to CSS variables in src/styles/globals.css
+      // Colours — mapped to CSS variables in src/styles/global.css
       // Never hardcode a hex value in a component. Use these class names instead.
       // -------------------------------------------------------------------------
       colors: {
