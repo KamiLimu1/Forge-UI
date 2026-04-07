@@ -93,19 +93,6 @@ function BrandPanel() {
   )
 }
 
-interface StatProps {
-  value: string
-  label: string
-}
-
-function Stat({ value, label }: StatProps) {
-  return (
-    <div className="flex flex-col gap-1">
-      <span className="font-mono text-heading font-bold text-teal-500">{value}</span>
-      <span className="font-sans text-body text-text-muted leading-normal">{label}</span>
-    </div>
-  )
-}
 
 // =============================================================================
 // Step indicator
