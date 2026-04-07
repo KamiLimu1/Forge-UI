@@ -12,10 +12,19 @@ import type {
   PasswordResetConfirmRequest,
   TokenRefreshRequest,
   UserProfileUpdateRequest,
+  UserInviteRequest,
+  BulkInviteRequest,
+  BulkInviteResponse,
   SuccessResponse,
   ErrorResponse,
 } from '@/types/auth'
 import { ApiError } from '@/types/auth'
+import type {
+  PaginatedResponse,
+  AdminUserListResponse,
+  AdminUserDetailResponse,
+  AdminUserUpdateRequest,
+} from '@/types/admin'
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL as string
 
@@ -159,6 +168,18 @@ export const api = {
         method: 'POST',
         body: JSON.stringify(body),
       }, false),
+
+    invite: (body: UserInviteRequest) =>
+      request<SuccessResponse>('/api/v1/auth/invite', {
+        method: 'POST',
+        body: JSON.stringify(body),
+      }),
+
+    bulkInvite: (body: BulkInviteRequest) =>
+      request<BulkInviteResponse>('/api/v1/auth/bulk-invite', {
+        method: 'POST',
+        body: JSON.stringify(body),
+      }),
   },
 
   users: {
@@ -168,5 +189,35 @@ export const api = {
         method: 'PATCH',
         body: JSON.stringify(body),
       }),
+  },
+
+  admin: {
+    users: {
+      list: (params?: { page?: number; page_size?: number; account_state?: string | null }) => {
+        const query = new URLSearchParams()
+        if (params?.page !== undefined) query.set('page', String(params.page))
+        if (params?.page_size !== undefined) query.set('page_size', String(params.page_size))
+        if (params?.account_state) query.set('account_state', params.account_state)
+        const qs = query.toString()
+        return request<PaginatedResponse<AdminUserListResponse>>(
+          `/api/v1/admin/users${qs ? `?${qs}` : ''}`
+        )
+      },
+
+      getById: (userId: string) =>
+        request<AdminUserDetailResponse>(`/api/v1/admin/users/${userId}`),
+
+      update: (userId: string, body: AdminUserUpdateRequest) =>
+        request<AdminUserDetailResponse>(`/api/v1/admin/users/${userId}`, {
+          method: 'PATCH',
+          body: JSON.stringify(body),
+        }),
+
+      suspend: (userId: string) =>
+        request<SuccessResponse>(`/api/v1/admin/users/${userId}/suspend`, { method: 'POST' }),
+
+      activate: (userId: string) =>
+        request<SuccessResponse>(`/api/v1/admin/users/${userId}/activate`, { method: 'POST' }),
+    },
   },
 }

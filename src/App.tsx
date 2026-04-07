@@ -4,6 +4,8 @@ import { Login } from '@/pages/Login'
 import { Activate } from '@/pages/Activate'
 import { ForgotPassword } from '@/pages/ForgotPassword'
 import { ResetPassword } from '@/pages/ResetPassword'
+import { AdminLayout } from '@/components/layout/AdminLayout'
+import { UsersPage } from '@/pages/admin/Users'
 import { Spinner } from '@/components/ui/Spinner'
 import type { ReactNode } from 'react'
 
@@ -37,6 +39,26 @@ function RedirectIfAuthed({ children }: { children: ReactNode }) {
   return isAuthenticated ? <Navigate to="/dashboard" replace /> : <>{children}</>
 }
 
+// Requires authentication AND admin role
+function RequireAdmin({ children }: { children: ReactNode }) {
+  const { user, isAuthenticated, isLoading } = useAuth()
+
+  if (isLoading) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-background">
+        <Spinner size="lg" />
+      </div>
+    )
+  }
+
+  if (!isAuthenticated) return <Navigate to="/login" replace />
+
+  const isAdmin = user?.roles.some((r) => r.role === 'admin') ?? false
+  if (!isAdmin) return <Navigate to="/dashboard" replace />
+
+  return <>{children}</>
+}
+
 function AppRoutes() {
   return (
     <Routes>
@@ -64,6 +86,19 @@ function AppRoutes() {
           </RequireAuth>
         }
       />
+
+      {/* Admin routes */}
+      <Route
+        path="/admin"
+        element={
+          <RequireAdmin>
+            <AdminLayout />
+          </RequireAdmin>
+        }
+      >
+        <Route index element={<Navigate to="/admin/users" replace />} />
+        <Route path="users" element={<UsersPage />} />
+      </Route>
 
       {/* Default redirect */}
       <Route path="/" element={<Navigate to="/login" replace />} />

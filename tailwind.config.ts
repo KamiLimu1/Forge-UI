@@ -47,6 +47,12 @@ const config: Config = {
         'danger-bg':  'var(--color-danger-bg)',
         'info-bg':    'var(--color-info-bg)',
 
+        // Semantic text colours (for use on semantic backgrounds)
+        'success-text': 'var(--color-success-text)',
+        'warning-text': 'var(--color-warning-text)',
+        'danger-text':  'var(--color-danger-text)',
+        'info-text':    'var(--color-info-text)',
+
         // Graduation status colours
         'status-on-track':    'var(--color-status-on-track)',
         'status-on-track-bg': 'var(--color-status-on-track-bg)',

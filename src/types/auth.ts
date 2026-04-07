@@ -69,6 +69,39 @@ export interface UserProfileUpdateRequest {
   last_name?: string | null
 }
 
+export interface UserInviteRequest {
+  email: string
+  first_name: string
+  last_name: string
+  roles: UserRole[]
+  cohort_id?: string | null
+}
+
+export interface BulkInviteUserEntry {
+  email: string
+  first_name: string
+  last_name: string
+  roles: UserRole[]
+}
+
+export interface BulkInviteRequest {
+  users: BulkInviteUserEntry[]
+  cohort_id?: string | null
+}
+
+export interface BulkInviteResultEntry {
+  email: string
+  success: boolean
+  message?: string | null
+}
+
+export interface BulkInviteResponse {
+  total: number
+  successful: number
+  failed: number
+  results: BulkInviteResultEntry[]
+}
+
 // ---- Response shapes ----
 
 export interface SuccessResponse {

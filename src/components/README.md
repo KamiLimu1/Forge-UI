@@ -15,9 +15,11 @@ These components have no knowledge of sessions, mentees, attendance, or any Forg
 | `Button` | `ui/Button.tsx` | Primary, ghost, and danger variants. Sizes: sm, md, lg. Supports `isLoading` and `fullWidth`. |
 | `Input` | `ui/Input.tsx` | Text input with optional label, error message, and hint. Accessible — wires `aria-invalid` and `aria-describedby` automatically. |
 | `Spinner` | `ui/Spinner.tsx` | Loading indicator. Sizes: sm, md, lg. |
+| `Badge` | `ui/Badge.tsx` | Inline status pill. Variants: success, warning, danger, info, neutral. |
+| `Modal` | `ui/Modal.tsx` | Dialog overlay. Props: isOpen, onClose, title, children, footer, width (sm/md/lg). Closes on Escape. |
 
 **Not yet built** (build these when first needed, following CONVECTIONS.md):
-Avatar, Badge, Card, Modal, Toast, Select, Checkbox, Textarea
+Avatar, Card, Toast, Select, Checkbox, Textarea
 
 ---
 
@@ -40,10 +42,12 @@ These define the structural skeleton of authenticated views.
 
 | Component | File | Description |
 |---|---|---|
-| _(none yet)_ | — | — |
+| `Sidebar` | `layout/Sidebar.tsx` | Fixed left nav for admin. Shows brand, nav items with active state, user name, and sign-out. |
+| `TopBar` | `layout/TopBar.tsx` | Page header bar. Accepts a `title` string. |
+| `AdminLayout` | `layout/AdminLayout.tsx` | Full admin shell. Renders `<Sidebar>` + `<Outlet>`. Used as a layout route in App.tsx. |
 
 **Candidates** (build when the dashboard shell is being built):
-Sidebar, TopBar, PageWrapper
+PageWrapper
 
 ---
 
